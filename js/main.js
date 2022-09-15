@@ -12,3 +12,5 @@ function checksLength(string,maxLength){
   }
   return false;
 }
+getRandom(2,5);
+checksLength('uyciygct',5);
