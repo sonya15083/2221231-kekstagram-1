@@ -3,8 +3,8 @@ function getRandom(min, max) {
 }
 
 function checksLength(string,maxLength){
-    if(string.length<=maxLength){
-        return true;
-    }
-    return false;
+  if(string.length<=maxLength){
+      return true;
+  }
+  return false;
 }
