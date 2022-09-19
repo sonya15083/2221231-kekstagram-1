@@ -1,5 +1,7 @@
 function getRandom(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+    if (min>=0 && min<max){
+        return Math.floor(Math.random() * (max - min + 1) + min);}
+    return "Упс, что-то не так..."
 }
 
 function checksLength(string,maxLength){
