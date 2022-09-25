@@ -1,7 +1,9 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Софья Могильникова](https://up.htmlacademy.ru/univer-js1/1/user/2221231).
-* Наставник: [Дмитрий Рябинин](https://htmlacademy.ru/profile/id63289).
+module2-task1
+* Наставник:[Дмитрий Рябинин](https://htmlacademy.ru/profile/id63289).
+master
 
 ---
 
