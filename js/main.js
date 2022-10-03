@@ -54,5 +54,5 @@ function createDescription(id){
 }
 
 const arrayOb=Array.from({length:photosAmount}).map((value, index)=>createDescription(index+1));
-
+arrayOb.push(...items)
 //master
