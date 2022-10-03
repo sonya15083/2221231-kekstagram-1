@@ -25,7 +25,7 @@ function getRandomPositiveInteger (a, b) {
   const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
   const result = Math.random() * (upper - lower + 1) + lower;
   return Math.floor(result);
-};
+}
 
 function checkStringLength (string, length) {
   return string.length <= length;
@@ -37,7 +37,7 @@ const getRandomElement=(array)=>array[getRandomPositiveInteger(0,array.length-1)
 function createDescription(id){
   return{
     id: id,
-    url: 'photos/${id}.jpg',
+    url:'photos/${id}.jpg',
     descriptione: getRandomElement(DESCRIPTION),
     likes: getRandomPositiveInteger(likesAmouth.min, likesAmouth.max),
     comments: Array.from({length:getRandomPositiveInteger(1,6)}).map((value, index)=>createComment(index+1))
