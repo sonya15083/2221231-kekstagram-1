@@ -34,6 +34,15 @@ checkStringLength('Нужно вызвать!',70);
 
 const getRandomElement=(array)=>array[getRandomPositiveInteger(0,array.length-1)];
 
+function createComment(id){
+  return{
+    id: getRandomPositiveInteger(1,500),
+    avatar: 'img/avatar-${id}.svg',
+    message: getRandomElement(MESSAGES),
+    name: getRandomElement(NAMES),
+  };
+}
+
 function createDescription(id){
   return{
     id: id,
@@ -41,15 +50,6 @@ function createDescription(id){
     descriptione: getRandomElement(DESCRIPTION),
     likes: getRandomPositiveInteger(likesAmouth.min, likesAmouth.max),
     comments: Array.from({length:getRandomPositiveInteger(1,6)}).map((value, index)=>createComment(index+1))
-  };
-}
-
-function createComment(id){
-  return{
-    id: getRandomPositiveInteger(1,500),
-    avatar: 'img/avatar-${id}.svg',
-    message: getRandomElement(MESSAGES),
-    name: getRandomElement(NAMES),
   };
 }
 
