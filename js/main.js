@@ -53,6 +53,6 @@ function createDescription(id){
   };
 }
 
-const array=Array.from({length:photosAmount}).map((value, index)=>createDescription(index+1));
+const arrayOb=Array.from({length:photosAmount}).map((value, index)=>createDescription(index+1));
 
 //master
