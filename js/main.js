@@ -1,5 +1,5 @@
 
-import {getRandomPositiveInteger,checkStringLength} from './util.js';
+import {getRandomPositiveInteger} from './util.js';
 import {NAMES,DESCRIPTION,MESSAGES,getRandomElement} from './data.js';
  
 const likesAmouth={min:15, max:200};
