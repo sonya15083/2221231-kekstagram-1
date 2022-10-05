@@ -1,6 +1,6 @@
 
- import {getRandomPositiveInteger,checkStringLength} from './util.js';
- import {NAMES,DESCRIPTION,MESSAGES,getRandomElement} from './data.js';
+import {getRandomPositiveInteger,checkStringLength} from './util.js';
+import {NAMES,DESCRIPTION,MESSAGES,getRandomElement} from './data.js';
  
 const likesAmouth={min:15, max:200};
 const photosAmount=25;
