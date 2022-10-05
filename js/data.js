@@ -1,4 +1,4 @@
-import {getRandomPositiveInteger,checkStringLength} from './util.js'
+import {getRandomPositiveInteger,checkStringLength} from './util.js';
 
 const NAMES = ['Мария','Дарья','Михаил','Евгений','Алексей','Ольга','Никита','Елизавета'];
 
