@@ -3,13 +3,7 @@ const getEscapeEvent = (evt, action) => {
     action();
   }
 };
-function onBigPictureCloseClick () {
-  closeBigPicture();
-}
 
-function onBigPictureEscPress (evt) {
-  getEscapeEvent(evt, closeBigPicture);
-}
 const body = document.querySelector('body');
 const socialCommentCount = document.querySelector('.social__comment-count');
 const bigPictureImg = document.querySelector('.big-picture__img');
@@ -62,4 +56,11 @@ const closeBigPicture = () => {
   bigPictureClose.removeEventListener('click', onBigPictureCloseClick);
 };
 
+function onBigPictureCloseClick () {
+  closeBigPicture();
+}
+
+function onBigPictureEscPress (evt) {
+  getEscapeEvent(evt, closeBigPicture);
+}
 export {showBigPictureOb};
