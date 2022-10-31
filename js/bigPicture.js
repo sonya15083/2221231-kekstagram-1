@@ -12,6 +12,14 @@ const bigPictureClose = bigPicture.querySelector('.big-picture__cancel');
 const commentsLoader = document.querySelector('.comments-loader');
 const commentsList = document.querySelector('.social__comments');
 const commentElement = commentsList.querySelector('.social__comment');
+const getBigPictureComment = (comment) => {
+  const commentItem = commentElement.cloneNode(true);
+  commentItem.querySelector('.social__picture').src = comment.avatar;
+  commentItem.querySelector('.social__picture').alt = comment.name;
+  commentItem.querySelector('.social__text').textContent = comment.message;
+  return commentItem;
+};
+
 const createCommentsFragment = (commentsArray) => {
   const fragment = document.createDocumentFragment();
   commentsArray.forEach((comment) => {
@@ -35,15 +43,6 @@ const showBigPhoto = (bigPhoto) => {
   document.addEventListener('keydown', onBigPictureEscPress);
   bigPictureClose.addEventListener('click', onBigPictureCloseClick);
 };
-
-const getBigPictureComment = (comment) => {
-  const commentItem = commentElement.cloneNode(true);
-  commentItem.querySelector('.social__picture').src = comment.avatar;
-  commentItem.querySelector('.social__picture').alt = comment.name;
-  commentItem.querySelector('.social__text').textContent = comment.message;
-  return commentItem;
-};
-
 
 const showBigPictureOb = (pictureOb) => {
   showBigPhoto(pictureOb);
