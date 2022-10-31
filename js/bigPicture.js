@@ -1,16 +1,15 @@
-function onBigPictureEscPress (evt) {
-  getEscapeEvent(evt, closeBigPicture);
-}
-
-function onBigPictureCloseClick () {
-  closeBigPicture();
-}
-
 const getEscapeEvent = (evt, action) => {
   if (evt.key === 'Escape') {
     action();
   }
 };
+function onBigPictureCloseClick () {
+  closeBigPicture();
+}
+
+function onBigPictureEscPress (evt) {
+  getEscapeEvent(evt, closeBigPicture);
+}
 const body = document.querySelector('body');
 const socialCommentCount = document.querySelector('.social__comment-count');
 const bigPictureImg = document.querySelector('.big-picture__img');
@@ -35,14 +34,6 @@ const showBigPhoto = (bigPhoto) => {
   bigPictureClose.addEventListener('click', onBigPictureCloseClick);
 };
 
-const getBigPictureComment = (comment) => {
-  const commentItem = commentElement.cloneNode(true);
-  commentItem.querySelector('.social__picture').src = comment.avatar;
-  commentItem.querySelector('.social__picture').alt = comment.name;
-  commentItem.querySelector('.social__text').textContent = comment.message;
-  return commentItem;
-};
-
 const createCommentsFragment = (commentsArray) => {
   const fragment = document.createDocumentFragment();
   commentsArray.forEach((comment) => {
@@ -50,6 +41,14 @@ const createCommentsFragment = (commentsArray) => {
     fragment.appendChild(newComment);
   });
   commentsList.appendChild(fragment);
+};
+
+const getBigPictureComment = (comment) => {
+  const commentItem = commentElement.cloneNode(true);
+  commentItem.querySelector('.social__picture').src = comment.avatar;
+  commentItem.querySelector('.social__picture').alt = comment.name;
+  commentItem.querySelector('.social__text').textContent = comment.message;
+  return commentItem;
 };
 
 const showBigPictureOb = (pictureOb) => {
