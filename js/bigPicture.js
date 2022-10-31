@@ -12,7 +12,6 @@ const bigPictureClose = bigPicture.querySelector('.big-picture__cancel');
 const commentsLoader = document.querySelector('.comments-loader');
 const commentsList = document.querySelector('.social__comments');
 const commentElement = commentsList.querySelector('.social__comment');
-
 const showBigPhoto = (bigPhoto) => {
   body.classList.add('modal-open');
   commentsList.innerHTML = '';
@@ -28,15 +27,6 @@ const showBigPhoto = (bigPhoto) => {
   bigPictureClose.addEventListener('click', onBigPictureCloseClick);
 };
 
-const createCommentsFragment = (commentsArray) => {
-  const fragment = document.createDocumentFragment();
-  commentsArray.forEach((comment) => {
-    const newComment = getBigPictureComment(comment);
-    fragment.appendChild(newComment);
-  });
-  commentsList.appendChild(fragment);
-};
-
 const getBigPictureComment = (comment) => {
   const commentItem = commentElement.cloneNode(true);
   commentItem.querySelector('.social__picture').src = comment.avatar;
@@ -45,6 +35,14 @@ const getBigPictureComment = (comment) => {
   return commentItem;
 };
 
+const createCommentsFragment = (commentsArray) => {
+  const fragment = document.createDocumentFragment();
+  commentsArray.forEach((comment) => {
+    const newComment = getBigPictureComment(comment);
+    fragment.appendChild(newComment);
+  });
+  commentsList.appendChild(fragment);
+};
 const showBigPictureOb = (pictureOb) => {
   showBigPhoto(pictureOb);
 };
