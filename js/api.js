@@ -31,4 +31,5 @@ const getData = (onSuccess) => {
     });
 };
 
+
 export {getData, sendData};

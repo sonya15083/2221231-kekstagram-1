@@ -71,6 +71,7 @@ const effectList = document.querySelector('.effects__list');
 const minScale = 25;
 const maxScale = 100;
 const scaleStep = 25;
+let flag =true;
 
 const onScaleButtonClick = (evt) => {
   const scaleInput = Number.parseInt(scaleValue.value, 10);
@@ -100,6 +101,7 @@ const onScaleButtonClick = (evt) => {
 };
 const onFilterButtonChange = (evt) => {
   const evtHandler = evt.target.value;
+
   if (evtHandler === 'none') {
     sliderWrapper.classList.add('hidden');
     imgPreview.style.filter = 'none';
@@ -134,7 +136,8 @@ const initEffects = () => {
       from: (value) => parseFloat(value),
     },
   });
+  flag=false;
 };
 
 
-export {onFilterButtonChange, onScaleButtonClick, initEffects, scaleContainer, effectList, sliderWrapper};
+export {onFilterButtonChange, onScaleButtonClick, initEffects,flag};
