@@ -4,6 +4,7 @@ import {openPhoto} from "./screen.js";
 const photosContainer = document.querySelector('.pictures');
 const templatePicture =document.querySelector('#picture').content;
 const newPictureTemplate=templatePicture.querySelector('.picture');
+let picturesItems=[];
 
 const createClonePhoto = function({url, likes,comments},index){
   const clonePicture = newPictureTemplate.cloneNode(true);
@@ -16,6 +17,12 @@ const createClonePhoto = function({url, likes,comments},index){
 };
 
 const createPhotos = function(photos){
+  photosContainer.querySelectorAll(".picture").forEach((photo)=>photo.remove());
+  console.log(photos);
+  if (picturesItems.length===0) {
+    picturesItems = photos;
+  }
+  
   const fragment = document.createDocumentFragment();
   for (let j=0;j<photos.length;j++){
     fragment.appendChild(createClonePhoto(photos[j],j));
@@ -31,4 +38,5 @@ const createPhotos = function(photos){
   document.querySelector('.pictures__title').classList.remove('visually-hidden');
 };
 
-export{createPhotos};
+
+export{createPhotos,picturesItems};
