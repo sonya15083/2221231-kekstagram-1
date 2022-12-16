@@ -45,6 +45,7 @@ filePhoto.addEventListener('change', () => {
 });
 
 const check = (evt)=>{
+    if (evt.type === 'click' || isEscapeKey(evt))
   form.querySelector('.img-upload__overlay').classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
   placePhoto.src= 'img/upload-default-image.jpg';
