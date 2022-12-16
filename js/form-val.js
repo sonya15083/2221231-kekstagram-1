@@ -1,14 +1,12 @@
-import {checkStringLength} from './util.js';
+import {checkStringLength,isEscapeKey} from './util.js';
 
 const hashtagRule = /^#[А-Яа-яA-Za-zёЁ0-9]{1,19}$/;
-const isEscapeKey = (evt) => evt.key === 'Escape';
+
 const onFocusPreventClose = (evt) => {
   if (isEscapeKey(evt)) {
     evt.stopPropagation();
   }
 };
-
-
 
 const validateForm = (form, hashtags, comment) => {
   const pristine = new Pristine(form, {
@@ -18,7 +16,7 @@ const validateForm = (form, hashtags, comment) => {
   });
   pristine.addValidator(hashtags,() => {
     const value = hashtags.value;
-    const hashtagsList = value.split().map((hashtag) => hashtag.toLowerCase());
+    const hashtagsList = value.split(' ').map((hashtag) => hashtag.toLowerCase());
     const uniqueHashtags = [...new Set(hashtagsList)];
     return value === '' || hashtagsList.every((hashtag) => hashtagRule.test(hashtag)) && hashtagsList.length <= 5 && hashtagsList.length === uniqueHashtags.length;
     

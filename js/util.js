@@ -1,4 +1,4 @@
-function getRandomPositiveInteger (a, b) {
+const getRandomPositiveInteger= (a, b) =>{
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
   const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
   const result = Math.random() * (upper - lower + 1) + lower;
@@ -7,7 +7,7 @@ function getRandomPositiveInteger (a, b) {
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-function checkStringLength (string, length) {
+const checkStringLength = (string, length)=>{
   return string.length <= length;
 }
 
@@ -22,9 +22,7 @@ const showAlert = (message) => {
   alertContainer.style.fontSize = '15px';
   alertContainer.style.textAlign = 'center';
   alertContainer.style.backgroundColor = 'red';
-
   alertContainer.textContent = message;
-
   document.body.append(alertContainer);
 
   setTimeout(() => {
@@ -37,23 +35,24 @@ const publicationMessage =()=> {
   document.body.append(message);
   const button = document.querySelector(".success__button");
   
-  document.addEventListener('click', (evt)=>{
+  const check = (evt)=>{
     if (!evt.target.closest(".succsess__inner")) {
       document.querySelector(".success").remove();
+      document.removeEventListener('click',check);
+      document.removeEventListener('keydown', check2);
     }
-  });
-  
-  document.addEventListener('keydown', (evt)=>{
+  };
+   
+  const check2 = (evt)=>{
     if (isEscapeKey(evt)){
       document.querySelector(".success").remove();
+      document.removeEventListener('keydown', check2);
+      document.removeEventListener('click',check);
     } 
-  });
+  };
 
-  button.addEventListener('click', ()=>{
-    document.querySelector(".success").remove();
-  });
-
-
+  document.addEventListener('click', check);
+  document.addEventListener('keydown', check2);
 };
 
 const errorMessage =()=> {
@@ -82,7 +81,7 @@ const errorMessage =()=> {
 
 };
 
-function debounce (callback, timeoutDelay = 500) {
+const debounce =(callback, timeoutDelay = 500)=> {
   let timeoutId;
   return (...rest) => {
     clearTimeout(timeoutId);
@@ -90,7 +89,7 @@ function debounce (callback, timeoutDelay = 500) {
   };
 }
 
-function shuffle(array) {
+const shuffle=(array) =>{
   for (let i = array.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -98,4 +97,4 @@ function shuffle(array) {
   return array;
 }
 
-export {getRandomPositiveInteger,checkStringLength,showAlert,publicationMessage,errorMessage,debounce,shuffle};
+export {getRandomPositiveInteger,checkStringLength,showAlert,publicationMessage,errorMessage,debounce,shuffle,isEscapeKey};

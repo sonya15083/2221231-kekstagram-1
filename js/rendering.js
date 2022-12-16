@@ -1,4 +1,3 @@
-import {showBigPictureOb} from "./bigPicture.js";
 import {openPhoto} from "./screen.js";
 
 const photosContainer = document.querySelector('.pictures');
@@ -6,7 +5,7 @@ const templatePicture =document.querySelector('#picture').content;
 const newPictureTemplate=templatePicture.querySelector('.picture');
 let picturesItems=[];
 
-const createClonePhoto = function({url, likes,comments},index){
+const createClonePhoto = ({url, likes,comments},index)=>{
   const clonePicture = newPictureTemplate.cloneNode(true);
   clonePicture.querySelector('.picture__img').src=url;
   clonePicture.querySelector('.picture__likes').textContent=likes;
@@ -16,9 +15,8 @@ const createClonePhoto = function({url, likes,comments},index){
 
 };
 
-const createPhotos = function(photos){
+const createPhotos = (photos)=>{
   photosContainer.querySelectorAll(".picture").forEach((photo)=>photo.remove());
-  console.log(photos);
   if (picturesItems.length===0) {
     picturesItems = photos;
   }

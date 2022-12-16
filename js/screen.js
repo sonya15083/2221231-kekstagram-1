@@ -1,4 +1,5 @@
-const isEscapeKey = (evt) => evt.key === 'Escape';
+import {isEscapeKey} from "./util.js";
+
 const body = document.body;
 const fullScreen = document.querySelector('.big-picture');
 const closeButton = fullScreen.querySelector('#picture-cancel');
