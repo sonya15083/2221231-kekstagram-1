@@ -19,16 +19,13 @@ const validateForm = (form, hashtags, comment) => {
     const hashtagsList = value.split(' ').map((hashtag) => hashtag.toLowerCase());
     const uniqueHashtags = [...new Set(hashtagsList)];
     return value === '' || hashtagsList.every((hashtag) => hashtagRule.test(hashtag)) && hashtagsList.length <= 5 && hashtagsList.length === uniqueHashtags.length;
-    
   },
     'Уникальные хештеги, каждый не более 20 символов, должны быть разделены пробелом');
-
   pristine.addValidator(comment, () => {
     const value = comment.value;
     return checkStringLength(value, 140);
   }, 
     'Комментарий не более 140 символов');
-
   return pristine.validate();
 };
 

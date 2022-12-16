@@ -66,8 +66,6 @@ const scaleValue = document.querySelector('.scale__control--value');
 const sliderWrapper = document.querySelector('.effect-level');
 const imgPreview = document.querySelector('.img-upload__preview').querySelector('img');
 const effectValue = document.querySelector('.effect-level__value');
-const effectList = document.querySelector('.effects__list');
-
 const minScale = 25;
 const maxScale = 100;
 const scaleStep = 25;
@@ -79,7 +77,7 @@ const onScaleButtonClick = (evt) => {
   const buttonScale = evt.target;
   
   if (buttonScale.matches('.scale__control--bigger') && scaleInput < maxScale) {
-    scaleCount =  scaleInput + scaleStep;
+    scaleCount = scaleInput + scaleStep;
     scaleValue.value = `${scaleCount}%`;
   }
 

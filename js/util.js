@@ -1,15 +1,13 @@
+const ALERT_SHOW_TIME=5000;
 const getRandomPositiveInteger= (a, b) =>{
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
   const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
   const result = Math.random() * (upper - lower + 1) + lower;
   return Math.floor(result);
-}
+};
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
-
-const checkStringLength = (string, length)=>{
-  return string.length <= length;
-}
+const checkStringLength = (string, length) => string.length <= length;
 
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
@@ -30,55 +28,52 @@ const showAlert = (message) => {
   }, ALERT_SHOW_TIME);
 };
 
-const publicationMessage =()=> {
-  const message = document.querySelector("#success").content.cloneNode(true);
+const publicationMessage = () => {
+  const message = document.querySelector('#success').content.cloneNode(true);
   document.body.append(message);
-  const button = document.querySelector(".success__button");
   
   const check = (evt)=>{
-    if (!evt.target.closest(".succsess__inner")) {
-      document.querySelector(".success").remove();
-      document.removeEventListener('click',check);
-      document.removeEventListener('keydown', check2);
+    if (evt.type === 'click'){
+      if (!evt.target.closest('.succsess__inner')) {
+        document.querySelector('.success').remove();
+        document.removeEventListener('click',check);
+      }
+    }
+    else if (evt.type === 'keydown'){
+      if (isEscapeKey(evt)){
+        document.querySelector('.success').remove();
+        document.removeEventListener('click',check);
+      }
     }
   };
    
-  const check2 = (evt)=>{
-    if (isEscapeKey(evt)){
-      document.querySelector(".success").remove();
-      document.removeEventListener('keydown', check2);
-      document.removeEventListener('click',check);
-    } 
-  };
-
   document.addEventListener('click', check);
-  document.addEventListener('keydown', check2);
+  document.addEventListener('keydown', check);
 };
 
 const errorMessage =()=> {
-  const message = document.querySelector("#error").content.cloneNode(true);
+  const message = document.querySelector('#error').content.cloneNode(true);
   document.body.append(message);
-  const button = document.querySelector(".error__button");
+  const button = document.querySelector('.error__button');
   
   document.addEventListener('click', (evt)=>{
-    if (!evt.target.closest(".error__inner")) {
-      document.querySelector(".error").remove();
-      document.querySelector(".img-upload__form").classList.remove("hidden");
+    if (!evt.target.closest('.error__inner')) {
+      document.querySelector('.error').remove();
+      document.querySelector('.img-upload__form').classList.remove('hidden');
     }
   });
   
   document.addEventListener('keydown', (evt)=>{
     if (isEscapeKey(evt)){
-      document.querySelector(".error").remove();
-      document.querySelector(".img-upload__form").classList.remove("hidden");
+      document.querySelector('.error').remove();
+      document.querySelector('.img-upload__form').classList.remove('hidden');
     } 
   });
 
   button.addEventListener('click', ()=>{
-    document.querySelector(".error").remove();
-    document.querySelector(".img-upload__form").classList.remove("hidden");
+    document.querySelector('.error').remove();
+    document.querySelector('.img-upload__form').classList.remove('hidden');
   });
-
 };
 
 const debounce =(callback, timeoutDelay = 500)=> {
@@ -87,7 +82,7 @@ const debounce =(callback, timeoutDelay = 500)=> {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
   };
-}
+};
 
 const shuffle=(array) =>{
   for (let i = array.length - 1; i > 0; i--) {
@@ -95,6 +90,6 @@ const shuffle=(array) =>{
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
-}
+};
 
 export {getRandomPositiveInteger,checkStringLength,showAlert,publicationMessage,errorMessage,debounce,shuffle,isEscapeKey};
