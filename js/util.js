@@ -63,7 +63,7 @@ const errorMessage =()=> {
     if (isEscapeKey(evt)){
       document.querySelector('.error').remove();
       document.querySelector('.img-upload__form').classList.remove('hidden');
-    } 
+    }
   });
   button.addEventListener('click', ()=>{
     document.querySelector('.error').remove();
