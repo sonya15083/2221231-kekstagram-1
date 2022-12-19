@@ -28,6 +28,15 @@ const unblockSubmitButton = () => {
   submitButton.textContent = 'Опубликовать';
 };
 
+const check = (evt)=>{
+  if (evt.type === 'click' || isEscapeKey(evt)){
+    form.querySelector('.img-upload__overlay').classList.add('hidden');
+    document.querySelector('body').classList.remove('modal-open');
+    placePhoto.src='img/upload-default-image.jpg';
+    closeButton.removeEventListener('click', check);
+  }
+};
+
 filePhoto.addEventListener('change', () => {
   form.querySelector('.img-upload__overlay').classList.remove('hidden');
   document.querySelector('body').classList.add('modal-open');
@@ -43,14 +52,6 @@ filePhoto.addEventListener('change', () => {
   document.addEventListener('keydown', check);
 });
 
-const check = (evt)=>{
-  if (evt.type === 'click' || isEscapeKey(evt)){
-    form.querySelector('.img-upload__overlay').classList.add('hidden');
-    document.querySelector('body').classList.remove('modal-open');
-    placePhoto.src='img/upload-default-image.jpg';
-    closeButton.removeEventListener('click', check);
-  }
-};
 inputHashtags.addEventListener('keydown', onFocusPreventClose);
 inputComment.addEventListener('keydown',onFocusPreventClose);
 
@@ -62,7 +63,7 @@ form.addEventListener('submit', (evt)=>{
       ()=>{
         form.querySelector('.img-upload__overlay').classList.add('hidden');
         document.querySelector('body').classList.remove('modal-open');
-        placePhoto.src= 'img/upload-default-image.jpg';   
+        placePhoto.src= 'img/upload-default-image.jpg';
         publicationMessage();
         form.reset();
         form.querySelector('.scale__control--value').value ='100%';
