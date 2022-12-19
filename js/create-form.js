@@ -13,15 +13,16 @@ const inputComment = form.querySelector('.text__description');
 const buttonPlas = form.querySelector('.scale__control--bigger');
 const buttonMin = form.querySelector('.scale__control--smaller');
 const listButton = form.querySelector('.effects__list');
-const imgPreview = document.querySelector('.img-upload__preview').querySelector('img');
 const sliderWrapper = document.querySelector('.effect-level');
 const submitButton = document.querySelector('.img-upload__submit');
+const imgPreview = document.querySelector('.img-upload__preview').querySelector('img');
+
 
 const blockSubmitButton = () => {
   submitButton.disabled = true;
   submitButton.textContent = 'Публикуется';
 };
-  
+
 const unblockSubmitButton = () => {
   submitButton.disabled = false;
   submitButton.textContent = 'Опубликовать';
@@ -32,36 +33,24 @@ filePhoto.addEventListener('change', () => {
   document.querySelector('body').classList.add('modal-open');
   const file = filePhoto.files[0];
   const fileName = file.name.toLowerCase();
-  const matches = FILE_TYPES.some((it) => {
-    return fileName.endsWith(it);
-  });
+  const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
 
-  if (matches) {
+  if (matches){
     imgPreview.src = URL.createObjectURL(file);
   }
 
   closeButton.addEventListener('click', check);
-  document.addEventListener('keydown', check2);
+  document.addEventListener('keydown', check);
 });
 
 const check = (evt)=>{
-    if (evt.type === 'click' || isEscapeKey(evt))
-  form.querySelector('.img-upload__overlay').classList.add('hidden');
-  document.querySelector('body').classList.remove('modal-open');
-  placePhoto.src= 'img/upload-default-image.jpg';
-  closeButton.removeEventListener('click', check);
-  document.removeEventListener('keydown', check2); 
-};
-const check2 = (evt)=>{
-  if (isEscapeKey(evt) ){
+  if (evt.type === 'click' || isEscapeKey(evt)){
     form.querySelector('.img-upload__overlay').classList.add('hidden');
     document.querySelector('body').classList.remove('modal-open');
-    placePhoto.src= 'img/upload-default-image.jpg';
+    placePhoto.src='img/upload-default-image.jpg';
     closeButton.removeEventListener('click', check);
-    document.removeEventListener('keydown', check2);
-  } 
+  }
 };
-
 inputHashtags.addEventListener('keydown', onFocusPreventClose);
 inputComment.addEventListener('keydown',onFocusPreventClose);
 
@@ -82,14 +71,13 @@ form.addEventListener('submit', (evt)=>{
         sliderWrapper.classList.add('hidden');
         unblockSubmitButton();
       },
-
       () =>{
         form.classList.add('hidden');
         errorMessage();
         unblockSubmitButton();
       },
       new FormData(form),
-  )
+    );
   }
 });
 
