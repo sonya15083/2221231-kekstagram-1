@@ -75,7 +75,6 @@ const onScaleButtonClick = (evt) => {
   const scaleInput = Number.parseInt(scaleValue.value, 10);
   let scaleCount;
   const buttonScale = evt.target;
-  
   if (buttonScale.matches('.scale__control--bigger') && scaleInput < maxScale) {
     scaleCount = scaleInput + scaleStep;
     scaleValue.value = `${scaleCount}%`;
