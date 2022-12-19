@@ -31,7 +31,6 @@ const showAlert = (message) => {
 const publicationMessage = () => {
   const message = document.querySelector('#success').content.cloneNode(true);
   document.body.append(message);
-  
   const check = (evt)=>{
     if (evt.type === 'click'){
       if (!evt.target.closest('.succsess__inner')) {
@@ -46,7 +45,6 @@ const publicationMessage = () => {
       }
     }
   };
-   
   document.addEventListener('click', check);
   document.addEventListener('keydown', check);
 };
@@ -55,21 +53,18 @@ const errorMessage =()=> {
   const message = document.querySelector('#error').content.cloneNode(true);
   document.body.append(message);
   const button = document.querySelector('.error__button');
-  
   document.addEventListener('click', (evt)=>{
     if (!evt.target.closest('.error__inner')) {
       document.querySelector('.error').remove();
       document.querySelector('.img-upload__form').classList.remove('hidden');
     }
   });
-  
   document.addEventListener('keydown', (evt)=>{
     if (isEscapeKey(evt)){
       document.querySelector('.error').remove();
       document.querySelector('.img-upload__form').classList.remove('hidden');
     } 
   });
-
   button.addEventListener('click', ()=>{
     document.querySelector('.error').remove();
     document.querySelector('.img-upload__form').classList.remove('hidden');
@@ -86,7 +81,7 @@ const debounce =(callback, timeoutDelay = 500)=> {
 
 const shuffle=(array) =>{
   for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
